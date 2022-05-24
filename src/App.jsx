@@ -12,15 +12,16 @@ export const App = () => {
   //追加ボタンを押したとき未完了の配列にセットする関数
   const onChlickAdd = () => {
     if (todoText === "") return;
+    // 未完了に追加
     const setNewTodo = [...incompTodo, todoText];
     setIncompTodo(setNewTodo);
+    // 入力したステートを空にする
     setTodoText("");
+    console.log(incompTodo);
   };
 
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
       <div>
         <input
           type="text"
@@ -29,6 +30,19 @@ export const App = () => {
           onChange={onChangeTodo}
         />
         <button onClick={onChlickAdd}>追加</button>
+      </div>
+      <div>
+        <p>未完了</p>
+        <ul>
+          {incompTodo.map((v, i) => {
+            <div key={i}>
+              <li>
+                <p>{v}</p>
+              </li>
+            </div>;
+          })}
+          <li>koko</li>
+        </ul>
       </div>
     </div>
   );
